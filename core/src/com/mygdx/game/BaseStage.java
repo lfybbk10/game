@@ -28,14 +28,14 @@ public class BaseStage extends Stage {
     }
 
     public void win() {
-        Gdx.gl.glClearColor(0, 1, 0, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
+        Gdx.gl.glClearColor(0, 1, 0, 1);
         ((GameScreen) game.getScreen()).countWins++;
         ((GameScreen) game.getScreen()).winsLabel.setText(((GameScreen) game.getScreen()).countWins);
     }
     public void lose() {
-        Gdx.gl.glClearColor(1, 0, 0, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
+        Gdx.gl.glClearColor(1, 0, 0, 1);
         Gdx.input.vibrate(100);
     }
     static public int randomInRange(int min, int max) {

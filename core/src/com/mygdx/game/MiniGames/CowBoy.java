@@ -56,7 +56,7 @@ public class CowBoy extends BaseStage {
                 steady.remove();
 
                 final boolean[] neuspel = {false};
-                boolean readyToBang =false;
+                final boolean[] readyToBang = {false};
 
 
                 new Thread(new Runnable() {
@@ -71,14 +71,12 @@ public class CowBoy extends BaseStage {
                     }
                 }).start();
                 addActor(bang);
-                readyToBang = true;
+                readyToBang[0] = true;
 
-
-                final boolean finalReadyToBang = readyToBang;
                 addListener(new ClickListener(){
                     @Override
                     public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
-                        if(neuspel[0] || !finalReadyToBang){
+                        if(neuspel[0] || !readyToBang[0]){
                             lose();
                         }
                         else
