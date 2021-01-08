@@ -1,9 +1,14 @@
 package com.mygdx.game.MiniGames;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
+import com.badlogic.gdx.scenes.scene2d.ui.Image;
+import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
@@ -13,6 +18,7 @@ import com.mygdx.game.Screens.GameScreen;
 
 public class CowBoy extends BaseStage {
     Label ready, steady, bang;
+    Image cowboy;
 
     public CowBoy(ScreenViewport scr, Game game) {
         super(scr, game);
@@ -24,10 +30,11 @@ public class CowBoy extends BaseStage {
         //Gdx.input.setOnscreenKeyboardVisible(true, Input.OnscreenKeyboardType.NumberPad);
         ready = new Label("READY", new Label.LabelStyle(font, Color.GREEN));
         steady = new Label("STEADY", new Label.LabelStyle(font, Color.YELLOW));
-        bang = new Label("BANG", new Label.LabelStyle(font, Color.RED));
-        ready.setPosition(Gdx.graphics.getWidth()/2f, Gdx.graphics.getHeight()/2f);
-        steady.setPosition(Gdx.graphics.getWidth()/2f, Gdx.graphics.getHeight()/2f);
-        bang.setPosition(Gdx.graphics.getWidth()/2f, Gdx.graphics.getHeight()/2f);
+        bang = new Label("TAP", new Label.LabelStyle(font, Color.RED));
+        cowboy  = new Image(new TextureRegion(new Texture(new FileHandle("cowboy.png"))));
+        ready.setPosition(Gdx.graphics.getWidth()/2f-ready.getWidth()/2f, Gdx.graphics.getHeight()/2f-ready.getHeight()/2f);
+        steady.setPosition(Gdx.graphics.getWidth()/2f-steady.getWidth()/2f, Gdx.graphics.getHeight()/2f-ready.getHeight()/2f);
+        bang.setPosition(Gdx.graphics.getWidth()/2f-bang.getWidth()/2f, Gdx.graphics.getHeight()/2f-ready.getHeight()/2f);
         new Thread(new Runnable() {
             @Override
             public void run() {
@@ -70,6 +77,7 @@ public class CowBoy extends BaseStage {
                         }
                     }
                 }).start();
+                addActor(cowboy);
                 addActor(bang);
                 readyToBang[0] = true;
 
