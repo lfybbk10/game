@@ -30,7 +30,7 @@ public class GameScreen implements Screen {
     public void show() {
         FreeTypeFontGenerator gen = new FreeTypeFontGenerator(Gdx.files.internal("Algeria.ttf"));
         FreeTypeFontGenerator.FreeTypeFontParameter param = new FreeTypeFontGenerator.FreeTypeFontParameter();
-        param.size =  (int) (Gdx.graphics.getWidth()*0.1f);
+        param.size =  (int) (Gdx.graphics.getWidth()*0.125f);
         font = gen.generateFont(param);
         winsLabel = new Label("0", new com.badlogic.gdx.scenes.scene2d.ui.Label.LabelStyle(font, Color.BLACK));
         winsLabel.setPosition(Gdx.graphics.getWidth()-winsLabel.getWidth(), Gdx.graphics.getHeight()-winsLabel.getHeight());
