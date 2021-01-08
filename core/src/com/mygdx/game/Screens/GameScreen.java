@@ -7,6 +7,7 @@ import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator;
 import com.mygdx.game.BaseStage;
 import com.mygdx.game.Game;
+import com.mygdx.game.MiniGames.CowBoy;
 import com.mygdx.game.MiniGames.MathCal;
 
 public class GameScreen implements Screen {
@@ -24,7 +25,7 @@ public class GameScreen implements Screen {
         FreeTypeFontGenerator.FreeTypeFontParameter param = new FreeTypeFontGenerator.FreeTypeFontParameter();
         param.size =  (int) (Gdx.graphics.getWidth()*0.1f);
         font = gen.generateFont(param);
-        currStage = new MathCal(game.scr, game);
+        currStage = new CowBoy(game.scr, game);
         currStage.init();
     }
 

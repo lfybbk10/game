@@ -16,7 +16,7 @@ public class KillMuha extends BaseStage {
 
     @Override
     public void init() {
-        muha = new GameObject(Gdx.graphics.getWidth()*0.05f, Gdx.graphics.getWidth()*0.05f, new TextureRegion(new Texture(Gdx.files.internal("muha.png"))));
-        muha.setPosition(randomInRange(int) muha.getWidth()/2, Gdx.graphics.getWidth() ));
+//        muha = new GameObject(Gdx.graphics.getWidth()*0.05f, Gdx.graphics.getWidth()*0.05f, new TextureRegion(new Texture(Gdx.files.internal("muha.png"))));
+//        muha.setPosition(randomInRange(int) muha.getWidth()/2, Gdx.graphics.getWidth() ));
     }
 }

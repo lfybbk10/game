@@ -46,24 +46,20 @@ public class MathCal extends BaseStage {
         //symbol.moveBy(symbol.getWidth(),0);
 
         btn1 = new Label("20", new Label.LabelStyle(font, Color.BLACK));
-        btn2 = new Label("31", new Label.LabelStyle(font, Color.BLACK));
-        btn3 = new Label("234", new Label.LabelStyle(font, Color.BLACK));
-
-
-
-
+        btn2 = new Label("20", new Label.LabelStyle(font, Color.BLACK));
+        btn3 = new Label("20", new Label.LabelStyle(font, Color.BLACK));
 
         genExercise();
         num2.setPosition(Gdx.graphics.getWidth()/2f-num2.getWidth()/2f, getHeight()*2/3);
         symbol.setPosition(num2.getX()-symbol.getWidth()*2, getHeight()*2/3);
-        num1.setPosition(symbol.getX()-symbol.getWidth()*2, getHeight()*2/3);
+        num1.setPosition(symbol.getX()-symbol.getWidth()*4, getHeight()*2/3);
 
 
         equal.setPosition(num2.getX()+equal.getWidth(), getHeight()*2/3);
         setAnswers();
         btn2.setPosition(Gdx.graphics.getWidth()/2f-btn2.getWidth()/2f, getHeight()/3);
         btn1.setPosition(btn2.getX()-btn1.getWidth()*2, getHeight()/3);
-        btn3.setPosition(btn2.getX()+btn3.getWidth(), getHeight()/3);
+        btn3.setPosition(btn2.getX()+btn3.getWidth()*2, getHeight()/3);
 
         addActor(num1);
         addActor(num2);
@@ -101,6 +97,7 @@ public class MathCal extends BaseStage {
         int rightButton = randomInRange(1,3);
         int wrongBut1 = res + randomInRange(1, 2);
         int wrongBut2 = res - randomInRange(1, 2);
+
         if(rightButton == 1){
             btn1.setText(res);
             btn2.setText(wrongBut1);
@@ -116,6 +113,7 @@ public class MathCal extends BaseStage {
             btn1.setText(wrongBut1);
             btn2.setText(wrongBut2);
         }
+
         setListeners(rightButton);
     }
 
