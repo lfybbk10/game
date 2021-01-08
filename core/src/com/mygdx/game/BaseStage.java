@@ -3,6 +3,7 @@ package com.mygdx.game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
+import com.mygdx.game.Screens.GameScreen;
 
 public class BaseStage extends Stage {
     public Game game;
@@ -25,7 +26,8 @@ public class BaseStage extends Stage {
     }
 
     public void win() {
-
+        ((GameScreen) game.getScreen()).countWins++;
+        ((GameScreen) game.getScreen()).winsLabel.setText(((GameScreen) game.getScreen()).countWins);
     }
     public void lose() {
         Gdx.input.vibrate(200);
