@@ -4,9 +4,12 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
+import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 import com.badlogic.gdx.scenes.scene2d.ui.Button;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
+import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
 import com.mygdx.game.BaseStage;
 import com.mygdx.game.Game;
@@ -25,6 +28,7 @@ public class MathCal extends BaseStage {
 
     @Override
     public void init() {
+        Gdx.input.setInputProcessor(this);
         BitmapFont font = ((GameScreen) game.getScreen()).font;
         //Gdx.input.setOnscreenKeyboardVisible(true, Input.OnscreenKeyboardType.NumberPad);
         num1 = new Label("20", new Label.LabelStyle(font, Color.BLACK));
@@ -37,24 +41,29 @@ public class MathCal extends BaseStage {
         symbol.invalidate();
         equal.invalidate();
 
-        num1.setPosition(num1.getWidth(), getHeight()*2/3);
-        symbol.setPosition(num1.getX()+num1.getWidth(), getHeight()*2/3);
-        num2.setPosition(symbol.getX()+num2.getWidth(), getHeight()*2/3);
-        equal.setPosition(num2.getX()+equal.getWidth(), getHeight()*2/3);
 
-        symbol.moveBy(symbol.getWidth(),0);
+
+        //symbol.moveBy(symbol.getWidth(),0);
 
         btn1 = new Label("20", new Label.LabelStyle(font, Color.BLACK));
         btn2 = new Label("31", new Label.LabelStyle(font, Color.BLACK));
         btn3 = new Label("234", new Label.LabelStyle(font, Color.BLACK));
 
 
-        btn2.setPosition(Gdx.graphics.getWidth()/2f, getHeight()/3);
-        btn1.setPosition(btn2.getX()-btn1.getWidth(), getHeight()/3);
-        btn3.setPosition(btn2.getX()+btn3.getWidth(), getHeight()/3);
+
 
 
         genExercise();
+        num2.setPosition(Gdx.graphics.getWidth()/2f-num2.getWidth()/2f, getHeight()*2/3);
+        symbol.setPosition(num2.getX()-symbol.getWidth()*2, getHeight()*2/3);
+        num1.setPosition(symbol.getX()-symbol.getWidth()*2, getHeight()*2/3);
+
+
+        equal.setPosition(num2.getX()+equal.getWidth(), getHeight()*2/3);
+        setAnswers();
+        btn2.setPosition(Gdx.graphics.getWidth()/2f-btn2.getWidth()/2f, getHeight()/3);
+        btn1.setPosition(btn2.getX()-btn1.getWidth()*2, getHeight()/3);
+        btn3.setPosition(btn2.getX()+btn3.getWidth(), getHeight()/3);
 
         addActor(num1);
         addActor(num2);
@@ -107,9 +116,41 @@ public class MathCal extends BaseStage {
             btn1.setText(wrongBut1);
             btn2.setText(wrongBut2);
         }
+        setListeners(rightButton);
     }
 
-    static public int randomInRange(int min, int max) {
-        return (int) (min + Math.random() * (max - min + 1));
+    public void setListeners(final int rightNum){
+        btn1.addListener(new ClickListener(){
+            @Override
+            public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
+                if(rightNum==1)
+                    win();
+                else
+                    lose();
+                return true;
+            }
+        });
+        btn2.addListener(new ClickListener(){
+            @Override
+            public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
+                if(rightNum==2)
+                    win();
+                else
+                    lose();
+                return true;
+            }
+        });
+        btn3.addListener(new ClickListener(){
+            @Override
+            public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
+                if(rightNum==3)
+                    win();
+                else
+                    lose();
+                return true;
+            }
+        });
     }
+
+
 }
