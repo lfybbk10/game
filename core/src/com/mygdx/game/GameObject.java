@@ -6,9 +6,10 @@ import com.badlogic.gdx.scenes.scene2d.Actor;
 
 public class GameObject extends Actor {
     TextureRegion texture;
-    float rotation;
+   public float rotation;
 
     public GameObject(float width, float height, TextureRegion texture){
+        super();
         setWidth(width);
         setHeight(height);
         this.texture = texture;
